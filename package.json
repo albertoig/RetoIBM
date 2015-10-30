@@ -1,0 +1,31 @@
+{
+  "name": "retoibm",
+  "version": "0.0.1",
+  "description": "Repositorio GIT para el reto IBM",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertoig/RetoIBM.git"
+  },
+  "keywords": [
+    "reto",
+    "nodejs",
+    "javascript",
+    "factorial",
+    "moneda",
+    "ecuaciones"
+  ],
+  "author": "Alberto Iglesias Gallego",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albertoig/RetoIBM/issues"
+  },
+  "homepage": "https://github.com/albertoig/RetoIBM#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3"
+  }
+}

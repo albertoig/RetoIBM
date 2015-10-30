@@ -1,0 +1,7 @@
+{
+  "app":{
+    "name":"Reto IBM",
+    "host":"localhost",
+    "port":"3000"
+  }
+}
