@@ -1,16 +1,17 @@
 'use strict';
 
+const config = require('./config/config.js');
+
 let express = require('express');
 let bodyParser = require('body-parser');
 let mathRouter = require('./routers/math');
-let textPlainReciver = require('./middlewares/utils/textplain.js');
-const config = require('./config/config.js');
+let exchangeMiddleware = require('./middlewares/exchange/exchange');
+let exchangeReceiver = require('./middlewares/utils/receiver/exchange');
 let app = express();
 let appInstance;
 
-app.use(textPlainReciver);
-
 app.use('/math', mathRouter);
+app.use('/exchange', exchangeReceiver,exchangeMiddleware);
 
 appInstance = app.listen(config.app.port, (err)=>{
     if(err){
