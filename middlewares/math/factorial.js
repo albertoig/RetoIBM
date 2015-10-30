@@ -4,16 +4,29 @@ let factorial = require('./../../modules/math/factorial');
 
 module.exports = (() => {
     return (req, res, next) => {
-        let base = req.params.base;
-        console.log(req.params);
-        if(base > 15 && base !== undefined && base.trim() !== ''){
-            res.status(400).send('Introduce un número menor o igual que 15 para calcular el factorial.\n\n' +
-                                 'Recuerda que el valor introducido no debe estar vacio.');
-            next();
+
+        let textResponse = '';
+        let statusCode;
+
+        if(req.textplain !== undefined && req.textplain.length !== 0 ){
+            statusCode = 200;
+            req.textplain.forEach((data)=> {
+                let base = data;
+                if(base.trim() !== '#' && base !== undefined && base.trim() !== ''){
+                    if(base > 15){
+                        textResponse += 'El número ' + base + ' es mayor de 15, no es valido.\n';
+                        next();
+                    }else{
+                        textResponse += factorial(base) + '\n';
+                        next();
+                    }
+                }
+            });
         }else{
-            let nCalculated = factorial(base);
-            res.status(200).send('Resultado: ' + nCalculated);
-            next();
+            statusCode = 400;
+            textResponse = 'No has enviado ningún dato, formato incorrecto';
         }
+
+        res.status(statusCode).send(textResponse);
     };
 })();
