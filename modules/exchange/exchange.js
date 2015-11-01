@@ -1,17 +1,25 @@
 'use strict';
 
 let getCoins = (coins, cuantity) => {
-    let textResult = '';
+    let result = '';
+    let tempCuantity =cuantity;
 
     coins.forEach((coin) => {
-        let disible = coin / cuantity;
+        let disible = Math.floor(parseFloat(tempCuantity) / parseFloat(coin));
+        tempCuantity = subtraction(tempCuantity, coin);
 
-        if(disible !== 0 ){
-            textResult += coin + 'X' + disible + ' ' ;
-        }
+        result += coin + 'X' + disible + ' ' ;
     });
 
     return textResult;
+};
+
+let subtraction = (quantity,coin) => {
+    if(parseInt(coin) <= parseInt(quantity)){
+        let rest = (quantity - coin);
+        return subtraction(rest,coin);
+    }
+    return quantity;
 };
 
 module.exports = getCoins;
