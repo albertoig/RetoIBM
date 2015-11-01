@@ -2,16 +2,14 @@
 
 let getCoins = (coins, cuantity) => {
     let result = '';
-    let tempCuantity =cuantity;
 
     coins.forEach((coin) => {
-        let disible = Math.floor(parseFloat(tempCuantity) / parseFloat(coin));
-        tempCuantity = subtraction(tempCuantity, coin);
-
+        let disible = Math.floor(cuantity/coin);
+        cuantity = subtraction(cuantity, coin);
         result += coin + 'X' + disible + ' ' ;
     });
 
-    return textResult;
+    return result;
 };
 
 let subtraction = (quantity,coin) => {
