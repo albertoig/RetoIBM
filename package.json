@@ -26,6 +26,9 @@
   "homepage": "https://github.com/albertoig/RetoIBM#readme",
   "dependencies": {
     "body-parser": "^1.14.1",
-    "express": "^4.13.3"
+    "bunyan": "^1.5.1",
+    "eslint": "^1.9.0",
+    "express": "^4.13.3",
+    "path": "^0.12.7"
   }
 }

@@ -1,8 +1,8 @@
 'use strict';
 
-let ecuationModule = require('./../../../modules/math/ecuation');
+const ecuationModule = require('./../../../modules/math/ecuation');
 const stringUtils = require('./../../../modules/utils/string');
-
+const logger = require('./../../../modules/logger/logger');
 const closer = '##';
 const separator = '·#·';
 const pointSeparator = '·';
@@ -30,6 +30,7 @@ let splitStringSeparator = (arrStr) => {
 
 let arrayStringToEcuations = (arrStr) => {
     let ecuations = [];
+
     arrStr.forEach((data) => {
         let linearEcuation = [];
         data.forEach((ecuation) => {
@@ -37,6 +38,7 @@ let arrayStringToEcuations = (arrStr) => {
         });
         ecuations.push(linearEcuation);
     });
+
     return ecuations;
 };
 
@@ -65,7 +67,7 @@ let checkSplitedRequest = (str) => {
 };
 
 module.exports = (() => {
-    return (req, res, next)=>{
+    return (req, res, next) => {
         if (req.is('text/*')) {
             req.setEncoding('utf8');
 
@@ -73,13 +75,14 @@ module.exports = (() => {
                 checkSplitedRequest(str)
                     .then((data) => {
                         req.ecuations = parseRequestToEcuations(data);
+                        logger.info(`Linear Ecuation on receiver: ${req.ecuations}`);
+                        return next();
                     })
                     .catch((error) => {
                         res.status(400).send(error);
                     })
             });
 
-            req.on('end', next);
         } else {
             return next();
         }
