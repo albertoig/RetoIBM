@@ -10,6 +10,7 @@ let app = express();
 let appInstance;
 
 app.use('/math', mathRouter);
+app.use(bodyParser);
 app.use(exchangeRouter);
 
 appInstance = app.listen(config.app.port, (err)=>{
