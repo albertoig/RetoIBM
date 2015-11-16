@@ -75,6 +75,7 @@ module.exports = (() => {
                 checkSplitedRequest(str)
                     .then((data) => {
                         req.ecuations = parseRequestToEcuations(data);
+                        console.log(JSON.stringify(req.ecuations));
                         logger.info(`Linear Ecuation on receiver: ${req.ecuations}`);
                         return next();
                     })

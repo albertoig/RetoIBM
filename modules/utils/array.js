@@ -1,3 +1,5 @@
+'use strict';
+
 let cloneArray = (arr) => {
     let clone = [];
     for (let i=0; i<arr.length; i++) {

@@ -12,7 +12,30 @@ let parse = (ecuation) => {
 let splitFormula = (ecuation) => {
     let splitedEcuation = ecuation.match(/-?[0-9]*(x|y)/gm);
     splitedEcuation.push(ecuation.match(/=[0-9]*/gm)[0]);
-    return splitedEcuation;
+    return makeJSONLinearEcuation(splitedEcuation);
+};
+
+let makeJSONLinearEcuation = (linearEcuation) => {
+    let madeJsonEcuation = makeJsonEcuation(linearEcuation);
+    return {linearEcuation:madeJsonEcuation,
+            result:{
+                determinants:[],
+                incognitas:[]
+            }}
+};
+
+let makeJsonEcuation = (ecuation) => {
+    let madeJsonEcuation = [];
+    ecuation.forEach((incognita) => {
+        madeJsonEcuation.push(makeJsonIncognita(incognita));
+    });
+    return madeJsonEcuation;
+};
+
+let makeJsonIncognita = (incognitaWithNumber) => {
+    let incognita = returnCleanIncognita(incognitaWithNumber);
+    let number = returnCleanNumberFromIncognita(incognitaWithNumber);
+    return {incognita:incognita,number:number};
 };
 
 let checkLinearEcuation = (linearEcuation) => {
@@ -168,6 +191,10 @@ let returnCleanNumberFromIncognita = (incognita) => {
     }else{
         return parseInt(result);
     }
+};
+
+let returnCleanIncognita = (incognita) => {
+    return incognita.replace( /[^a-zA-Z=]+/g, '');
 };
 
 module.exports = {
