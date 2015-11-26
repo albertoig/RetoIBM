@@ -25,10 +25,10 @@ You have to send a text/plain format to http://yourhost:yourport/exchange if you
 A real example is:
 ```100,50,20,5,2,1:36```
 
-The output will be:
+The output will be: 
 ```100X0 50X0 20X1 5X3 2X0 1X1```
 
 FASE 3: Ecuations
 -----------------
 
-bla bla bla
+https://onedrive.live.com/view.aspx?cid=b2b5af285c5a7884&id=documents&resid=B2B5AF285C5A7884%21265&app=Excel&authkey=!AOvEyUYfJfTw51o&
